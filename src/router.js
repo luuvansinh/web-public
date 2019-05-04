@@ -12,6 +12,7 @@ import { HomeView, HomeModel } from './public/home'
 import { CartModel, CartView } from './screens/cart'
 import { ProductDetailModel, ProductDetailView } from './screens/product-detail'
 import { CategoryPublicModel, CategoryPublicView } from './public/category'
+import { CheckoutModel, CheckoutView } from './screens/checkout'
 
 const { ConnectedRouter } = routerRedux
 
@@ -54,6 +55,10 @@ function Routers({ history, app }) {
     path: '/categories/:categoryId',
     models: () => [CategoryPublicModel],
     component: () => CategoryPublicView,
+  }, {
+    path: '/checkout',
+    models: () => [CheckoutModel],
+    component: () => CheckoutView,
   }]
   // const role = localStorage.getItem(AppConst.localStorage.roleKey)
   const unauthenticatedComponents = (

@@ -5,7 +5,7 @@ import { connect } from 'dva'
 import { Layout, Icon } from 'antd'
 import styles from './style.less'
 
-import { PHeader, PSider } from './public'
+import { PHeader } from './public'
 
 class LayoutView extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class LayoutView extends React.Component {
           cart={cart}
         />
         <Layout>
-          <PSider />
+          {/* <PSider /> */}
           {
             !isLoggedIn ?
               <Layout>{unauthenticatedComponents}</Layout>

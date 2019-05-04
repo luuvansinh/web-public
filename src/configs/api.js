@@ -41,6 +41,17 @@ export default {
     },
   },
 
+  order: {
+    create: () => ({
+      url: '/orders',
+      method: METHODS.post,
+    }),
+    cancel: _id => ({
+      url: `/orders/${_id}`,
+      method: METHODS.patch,
+    }),
+  },
+
   // COMMON
   common: {
     login: () => ({
