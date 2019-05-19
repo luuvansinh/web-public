@@ -2,14 +2,12 @@ import { fetch } from './service'
 import { notification } from '../../../utils'
 
 export default {
-  namespace: 'userList',
+  namespace: 'users',
   state: {
     users: [],
     filter: {
-      city: 'all',
       keyword: '',
-      sort: '-statistic.coin',
-      isLocalExpert: 'all',
+      sort: '-statistic.expense',
       page: 0,
       limit: 0,
       total: 0,
