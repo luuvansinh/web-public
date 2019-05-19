@@ -5,7 +5,7 @@ import { connect } from 'dva'
 import { Layout, Icon } from 'antd'
 import styles from './style.less'
 
-import { PHeader } from './public'
+import { PHeader, PFooter } from './public'
 
 class LayoutView extends React.Component {
   constructor(props) {
@@ -54,6 +54,7 @@ class LayoutView extends React.Component {
                 <Layout>{children}</Layout>
                 : <div className="app-loading-indicator"><Icon type="loading" /></div>
           }
+          <PFooter />
         </Layout>
       </Layout>
     )

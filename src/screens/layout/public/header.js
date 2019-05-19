@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'dva/router'
-import { Layout, Menu, Row, Badge, Icon, Avatar, Dropdown } from 'antd';
+import { Layout, Menu, Row, Badge, Icon, Avatar, Dropdown, Input, Col } from 'antd';
 import { ImageConst, MessageConst } from '../../../configs'
 import { LoginModal } from './modals'
 import './style.less'
@@ -57,6 +57,13 @@ export class PHeader extends PureComponent {
           <Link to="/">
             <img src={ImageConst.logo} alt="" height={80} />
           </Link>
+          <Col span={12} className="padding-top-20">
+            <Input.Search
+              placeholder={MessageConst.search}
+              size="large"
+              enterButton
+            />
+          </Col>
           <div className="right-menu">
             <div className="badge-container margin-right-12 cursor-pointer">
               {

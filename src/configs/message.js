@@ -36,4 +36,5 @@ export default {
   orderSuccess: 'Đặt hàng thành công',
   orderSuccessContent: 'Đơn hàng của bạn đang được chúng tối xác nhận!',
   continue: 'Tiếp tục mua hàng',
+  search: 'Tìm kiếm',
 }

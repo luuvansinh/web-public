@@ -18,7 +18,7 @@ export class HomeView extends PureComponent {
   }
 
   render() {
-    const { home: { products }, dispatch, loading } = this.props
+    const { home: { products, filters }, dispatch, loading } = this.props
     return (
       <Layout className="public-content">
         <Row gutter={16}>
@@ -28,12 +28,18 @@ export class HomeView extends PureComponent {
             ))
           }
         </Row>
-        <Row type="flex" justify="center">
-          <Button
-            onClick={this.loadMore}
-            loading={loading.effects['home/loadmore']}
-          >Load more</Button>
-        </Row>
+        {
+          !filters.endData && (
+            <Row type="flex" justify="center">
+              <Button
+                onClick={this.loadMore}
+                loading={loading.effects['home/loadmore']}
+              >
+                Load more
+              </Button>
+            </Row>
+          )
+        }
       </Layout>
     )
   }

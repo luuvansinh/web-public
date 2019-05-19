@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Layout, Card, List, Row, Col, InputNumber, Button, Alert, Avatar } from 'antd';
 import { connect } from 'dva'
 import { Link } from 'react-router-dom';
+import { routerRedux } from 'dva/router';
 import { RcBreadcrumb } from '../../components';
 import './style.less'
 
@@ -62,7 +63,7 @@ class CartView extends Component {
       url: '/',
       name: 'Trang chủ',
     }]
-    const { app: { cart } } = this.props
+    const { app: { cart }, dispatch } = this.props
     return (
       <Layout className="container">
         <RcBreadcrumb name="Giỏ hàng của tôi" parents={parents} />
@@ -73,20 +74,20 @@ class CartView extends Component {
               dataSource={cart}
               renderItem={this.renderListItem}
             /> :
-            (
-              <Fragment>
-                <Alert
-                  className="align-center margin-bottom"
-                  message="Giỏ hàng của bạn đang trống"
-                  type="info"
-                />
-                <div className="align-center">
-                  <Link to="/">
-                    Mua hàng
-                  </Link>
-                </div>
-              </Fragment>
-            )}
+              (
+                <Row type="flex" justify="center">
+                  <Col span={12} className="align-center">
+                    <Alert
+                      className="align-center margin-bottom-16"
+                      message="Giỏ hàng của bạn đang trống"
+                      type="info"
+                    />
+                    <Button type="primary" onClick={() => dispatch(routerRedux.push('/'))}>
+                      Mua hàng
+                    </Button>
+                  </Col>
+                </Row>
+              )}
           </Card>
           {
             !!cart.length &&

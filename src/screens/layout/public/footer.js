@@ -1,14 +1,17 @@
-import React, { PureComponent } from 'react'
-import { Layout } from 'antd';
+import React from 'react'
+import { Layout } from 'antd'
+import './style.less'
 
-export class PFooter extends PureComponent {
+const { Footer } = Layout
+
+class AppFooter extends React.Component {
   render() {
     return (
-      <Layout.Footer style={{ textAlign: 'center' }}>
-        Lưu Văn Sinh ĐHBK
-      </Layout.Footer>
+      <Footer className="app-footer">
+        ĐHBK ©2018 Created by Văn Sinh
+      </Footer>
     )
   }
 }
 
-export default PFooter
+export default AppFooter

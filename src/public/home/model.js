@@ -8,6 +8,8 @@ export default {
     products: [],
     filters: {
       page: 0,
+      keyword: '',
+      endData: false,
     },
   },
 
@@ -20,7 +22,7 @@ export default {
   effects: {
     *products({ payload }, { put, call }) {
       const response = yield call(getProducts, payload)
-      const { products, total, limit } = response.data.data
+      const { products, total, limit, endData } = response.data.data
       yield put({
         type: 'updateState',
         payload: {
@@ -29,6 +31,7 @@ export default {
             ...payload,
             limit,
             total,
+            endData,
           },
         },
       })
@@ -36,13 +39,14 @@ export default {
     *loadmore({ }, { put, select, call }) {
       const { filters: { page }, products } = yield select(_ => _.home)
       const response = yield call(getProducts, { page: page + 1 })
-      const { products: newData } = response.data.data
+      const { products: newData, endData } = response.data.data
       yield put({
         type: 'updateState',
         payload: {
           products: [...products, ...newData],
           filters: {
             page: page + 1,
+            endData,
           },
         },
       })
