@@ -3,7 +3,9 @@ import { notification } from '../../utils';
 
 export default {
   namespace: 'checkout',
-  state: {},
+  state: {
+    isOrderSuccess: false,
+  },
   effects: {
     *order({ payload }, { call, put }) {
       const response = yield call(order, payload)
@@ -11,11 +13,21 @@ export default {
       if (!success) {
         return notification.error(message)
       }
-      notification.success(message)
       yield put({
         type: 'app/getCart',
       })
+      yield put({
+        type: 'updateState',
+        payload: { isOrderSuccess: true },
+      })
     },
   },
-  reducers: {},
+  reducers: {
+    updateState(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
+      }
+    },
+  },
 }

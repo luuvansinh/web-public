@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Layout, Row, Col, Card, List, Avatar } from 'antd';
+import { Layout, Row, Col, Card, List, Avatar, Alert, Button } from 'antd';
 import { connect } from 'dva'
 import { Link } from 'react-router-dom'
+import { routerRedux } from 'dva/router'
 import FormInfo from './form/view'
 import './style.less'
+import { MessageConst } from '../../configs';
 
 
 class CheckoutView extends Component {
@@ -41,28 +43,47 @@ class CheckoutView extends Component {
   )
 
   render() {
-    const { app: { cart, pUser }, dispatch, checkout: { coupon } } = this.props
-    // const { app: { cart } } = this.props
+    const { app: { cart, pUser }, dispatch, checkout: { coupon, isOrderSuccess } } = this.props
     return (
       <Layout className="container">
         <Layout className="page-content">
-          <Row gutter={16}>
-            <Col sm={24} md={14} lg={16}>
-              <Card>
-                <List
-                  itemLayout="horizontal"
-                  dataSource={cart}
-                  header="Sản phẩm"
-                  renderItem={this.renderItem}
-                />
-              </Card>
-            </Col>
-            <Col sm={24} md={10} lg={8}>
-              <Card>
-                <FormInfo user={pUser} onSubmit={this.handleSubmit} dispatch={dispatch} cart={cart} coupon={coupon} />
-              </Card>
-            </Col>
-          </Row>
+          {
+            isOrderSuccess ? (
+              <Row type="flex" justify="center">
+                <Col span={12}>
+                  <Alert
+                    message="Đặt hàng thành công"
+                    type="success"
+                    description={(
+                      <React.Fragment>
+                        <p>{MessageConst.orderSuccessContent}</p>
+                        <Button onClick={() => dispatch(routerRedux.push('/'))}>{MessageConst.continue}</Button>
+                      </React.Fragment>
+                    )}
+                    showIcon
+                  />
+                </Col>
+              </Row>
+            ) : (
+              <Row gutter={16}>
+                <Col sm={24} md={14} lg={16}>
+                  <Card>
+                    <List
+                      itemLayout="horizontal"
+                      dataSource={cart}
+                      header="Sản phẩm"
+                      renderItem={this.renderItem}
+                    />
+                  </Card>
+                </Col>
+                <Col sm={24} md={10} lg={8}>
+                  <Card>
+                    <FormInfo user={pUser} onSubmit={this.handleSubmit} dispatch={dispatch} cart={cart} coupon={coupon} />
+                  </Card>
+                </Col>
+              </Row>
+              )
+          }
         </Layout>
       </Layout>
     )

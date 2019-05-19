@@ -33,4 +33,7 @@ export default {
   phoneRequired: 'SĐT không được trống',
   alreadyHaveAccount: 'Bạn đã có tài khoản',
   dontHaveAccount: 'Bạn chưa có tài khoản',
+  orderSuccess: 'Đặt hàng thành công',
+  orderSuccessContent: 'Đơn hàng của bạn đang được chúng tối xác nhận!',
+  continue: 'Tiếp tục mua hàng',
 }
