@@ -54,7 +54,9 @@ export class PHeader extends PureComponent {
     return (
       <Layout.Header className="header app-header">
         <Row className="logo-header" type="flex" justify="space-between">
-          <img src={ImageConst.logo} alt="" height={80} />
+          <Link to="/">
+            <img src={ImageConst.logo} alt="" height={80} />
+          </Link>
           <div className="right-menu">
             <div className="badge-container margin-right-12 cursor-pointer">
               {
