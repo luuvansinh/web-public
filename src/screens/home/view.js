@@ -45,4 +45,4 @@ export class HomeView extends PureComponent {
   }
 }
 
-export default connect(({ home, loading }) => ({ home, loading }))(HomeView)
+export default connect(({ home, loading, app }) => ({ home, loading, app }))(HomeView)

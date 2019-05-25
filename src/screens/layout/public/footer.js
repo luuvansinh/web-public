@@ -8,7 +8,7 @@ class AppFooter extends React.Component {
   render() {
     return (
       <Footer className="app-footer">
-        ĐHBK ©2018 Created by Văn Sinh
+        ĐHBK ©2019 Created by Văn Sinh
       </Footer>
     )
   }

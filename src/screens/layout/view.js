@@ -33,7 +33,7 @@ class LayoutView extends React.Component {
   render() {
     const { children, location, app, unauthenticatedComponents, dispatch } = this.props
     // const isLoggedIn = app.user && app.user._id
-    const { isLoggedIn, appFilters, categories, hasPublicUser, pUser, cart } = app
+    const { isLoggedIn, appFilters, categories, hasPublicUser, pUser, cart, locationQuery } = app
     return (
       <Layout className={styles.appLayout} style={{ minHeight: '100vh' }}>
         <PHeader
@@ -43,6 +43,7 @@ class LayoutView extends React.Component {
           pUser={pUser}
           localtion={location}
           cart={cart}
+          keyword={locationQuery.keyword}
         />
         <Layout>
           {/* <PSider /> */}

@@ -6,6 +6,16 @@ import { notification } from '../../utils'
 
 const { authKey, roleKey } = AppConst.localStorage
 
+const defaultFilter = {
+  keyword: '',
+  page: 0,
+  limit: 0,
+  total: 0,
+  sort: '-createdAt',
+  minPrice: 0,
+  maxPrice: 1000000,
+}
+
 export default {
   namespace: 'app',
   state: {
@@ -18,6 +28,8 @@ export default {
     cart: [],
     hasPublicUser: false,
     pUser: {},
+    filter: defaultFilter,
+    products: [],
   },
 
   subscriptions: {
@@ -149,6 +161,11 @@ export default {
       yield put({
         type: 'getCart',
       })
+    },
+    *search({ keyword }, { put }) {
+      const query = queryString.stringify({ keyword })
+      console.log({ queryString })
+      yield put(routerRedux.push(`/search?${query}`))
     },
   },
 

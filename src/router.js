@@ -8,11 +8,12 @@ import { i18n } from './configs/locale'
 // Load views
 import { LayoutView } from './screens/layout'
 import { LoginView, LoginModel } from './screens/login'
-import { HomeView, HomeModel } from './public/home'
+import { HomeView, HomeModel } from './screens/home'
 import { CartModel, CartView } from './screens/cart'
 import { ProductDetailModel, ProductDetailView } from './screens/product-detail'
 import { CategoryPublicModel, CategoryPublicView } from './public/category'
 import { CheckoutModel, CheckoutView } from './screens/checkout'
+import { SearchModel, SearchView } from './screens/search'
 
 const { ConnectedRouter } = routerRedux
 
@@ -59,6 +60,10 @@ function Routers({ history, app }) {
     path: '/checkout',
     models: () => [CheckoutModel],
     component: () => CheckoutView,
+  }, {
+    path: '/search',
+    models: () => [SearchModel],
+    component: () => SearchView,
   }]
   // const role = localStorage.getItem(AppConst.localStorage.roleKey)
   const unauthenticatedComponents = (

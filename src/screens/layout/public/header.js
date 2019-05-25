@@ -20,6 +20,13 @@ export class PHeader extends PureComponent {
     })
   }
 
+  onSearch = (keyword) => {
+    this.props.dispatch({
+      type: 'app/search',
+      keyword,
+    })
+  }
+
   toggleLoginModal = () => {
     const { isVisibleLoginModal } = this.state
     this.setState({ isVisibleLoginModal: !isVisibleLoginModal })
@@ -37,9 +44,8 @@ export class PHeader extends PureComponent {
     this.setState({ isLogin: type === 'login' })
   }
 
-
   render() {
-    const { categories, hasPublicUser, pUser, dispatch, cart } = this.props
+    const { categories, hasPublicUser, pUser, dispatch, cart, keyword } = this.props
     const { isVisibleLoginModal, isLogin } = this.state
     const popupContent = (
       <Menu>
@@ -61,7 +67,10 @@ export class PHeader extends PureComponent {
             <Input.Search
               placeholder={MessageConst.search}
               size="large"
+              name="keyword"
               enterButton
+              onSearch={this.onSearch}
+              defaultValue={keyword}
             />
           </Col>
           <div className="right-menu">
