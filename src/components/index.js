@@ -13,6 +13,7 @@ import RcGallery from './gallery'
 import RcDatePickerHorizontal from './date-picker-horizontal'
 import RcSelectBoxHorizontal from './select-box-horizontal'
 import ProductItem from './product-item'
+import RcSlider from './slider'
 
 export {
   RcBreadcrumb,
@@ -30,5 +31,6 @@ export {
   RcDatePickerHorizontal,
   RcSelectBoxHorizontal,
   ProductItem,
+  RcSlider,
 }
 

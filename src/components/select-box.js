@@ -7,7 +7,7 @@ const { Option } = Select
 
 class RcSelectBox extends PureComponent {
   render() {
-    const { title, values, initValue, onChange, isSearch = false } = this.props
+    const { title, values, initValue, onChange, isSearch = false, isHorizontal = false } = this.props
     const search = isSearch && {
       showSearch: true,
       optionFilterProp: 'children',
@@ -17,7 +17,7 @@ class RcSelectBox extends PureComponent {
       },
     }
     return (
-      <Col xs={24} sm={24} md={24} lg={24} xl={24} className="rc-component">
+      <Col span={isHorizontal ? 6 : 24} className="rc-component">
         <div className="section-title">
           <h4>{title}</h4>
         </div>

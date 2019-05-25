@@ -8,16 +8,16 @@ export default {
     filter: {},
   },
   effects: {
-    *search({ }, { call, put, select }) {
-      const { filter } = yield select(_ => _.search)
-      const response = yield call(getProducts, filter)
+    *search({ payload }, { call, put }) {
+      console.log({ payload })
+      const response = yield call(getProducts, payload)
       const { products, total, limit, endData } = response.data.data
       yield put({
         type: 'updateState',
         payload: {
           products,
           filter: {
-            ...filter,
+            ...payload,
             total,
             limit,
             endData,
