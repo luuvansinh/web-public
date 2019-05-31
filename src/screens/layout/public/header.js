@@ -88,7 +88,7 @@ export class PHeader extends PureComponent {
               }
             </div>
             <div className="badge-container cursor-pointer">
-              <Link to="/cart">
+              <Link to="/cart" className="padding-top-20">
                 <Badge count={cart.length}>
                   <Icon style={{ fontSize: 30 }} type="shopping-cart" />
                 </Badge>

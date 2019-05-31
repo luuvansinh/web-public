@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Layout, Row, Button } from 'antd'
+import { Layout, Row, Button, Col } from 'antd'
 import { connect } from 'dva';
 import { ProductItem } from '../../components';
 
@@ -21,12 +21,16 @@ export class HomeView extends PureComponent {
     const { home: { products, filters }, dispatch, loading } = this.props
     return (
       <Layout className="public-content">
-        <Row gutter={16}>
-          {
-            products.map(item => (
-              <ProductItem dispatch={dispatch} product={item} key={item._id} />
-            ))
-          }
+        <Row gutter={16} type="flex" justify="center">
+          <Col span={18}>
+            <Row gutter={16}>
+              {
+                products.map(item => (
+                  <ProductItem dispatch={dispatch} product={item} key={item._id} />
+                ))
+              }
+            </Row>
+          </Col>
         </Row>
         {
           !filters.endData && (

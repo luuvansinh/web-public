@@ -9,7 +9,6 @@ export default {
   },
   effects: {
     *search({ payload }, { call, put }) {
-      console.log({ payload })
       const response = yield call(getProducts, payload)
       const { products, total, limit, endData } = response.data.data
       yield put({
