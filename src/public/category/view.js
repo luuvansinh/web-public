@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
-import { Layout, Row } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import { ProductItem } from '../../components';
 
 export class View extends PureComponent {
@@ -28,12 +28,16 @@ export class View extends PureComponent {
     const { category: { category }, dispatch } = this.props
     return !category ? null : (
       <Layout className="public-content">
-        <Row gutter={16}>
-          {
-            category.products.map(item => (
-              <ProductItem dispatch={dispatch} product={item} key={item._id} />
-            ))
-          }
+        <Row gutter={16} type="flex" justify="center">
+          <Col span={18}>
+            <Row gutter={16}>
+              {
+                category.products.map(item => (
+                  <ProductItem dispatch={dispatch} product={item} key={item._id} />
+                ))
+              }
+            </Row>
+          </Col>
         </Row>
       </Layout>
     )

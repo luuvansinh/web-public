@@ -65,7 +65,9 @@ class ProductView extends Component {
                 </h3>
                 <p>Giá: {format.number(product.price)} vnđ</p>
                 <p>Số lượng: {product.quantity}</p>
-                <Rate className="font-rate" disabled defaultValue={1} />
+                <div>
+                  <Rate className="font-rate" disabled defaultValue={1} />
+                </div>
                 {/* <p>{0} đánh giá | {product.comments.length} bình luận</p> */}
                 {/* <p className="product-origin">Nguồn gốc: {product.origin}</p> */}
                 {/* <p>Cửa hàng: {product.shop && product.shop.name}</p> */}
