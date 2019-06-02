@@ -62,7 +62,7 @@ const OrderItem = ({ order, toggleModal, cancel }) => (
               <Button
                 size="small"
                 type="danger"
-                onClick={() => cancel(order.id)}
+                onClick={() => cancel(order._id)}
               >
                 Hủy đơn hàng
               </Button>
@@ -159,7 +159,8 @@ export default class OrderHistory extends Component {
               <OrderItem
                 key={item._id}
                 showInfo={this.showInfo}
-                order={item} cancel={this.cancel}
+                order={item}
+                cancel={this.cancel}
                 toggleModal={this.toggleModal}
               />
             ))

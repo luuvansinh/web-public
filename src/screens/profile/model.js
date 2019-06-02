@@ -40,11 +40,11 @@ export default {
     },
     *cancelOrder({ orderId }, { call, put, select }) {
       const response = yield call(cancelOrder, orderId)
-      const { error } = response
-      if (error) {
-        return notification.error(error)
+      const { success, message } = response.data
+      if (!success) {
+        return notification.error(message)
       }
-      notification.success('Hủy đơn hàng thành công')
+      notification.success(message)
       const { filter } = yield select(state => state.profile)
       yield put({
         type: 'fetchOrders',
