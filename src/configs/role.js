@@ -29,6 +29,10 @@ const LIST_ROUTES = [
     id: 'checkout',
     value: new RegExp('/checkout/.+$', 'i'),
   },
+  {
+    id: 'profile',
+    value: new RegExp('/profile', 'i'),
+  },
 ]
 
 /**

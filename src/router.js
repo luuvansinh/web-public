@@ -14,6 +14,7 @@ import { ProductDetailModel, ProductDetailView } from './screens/product-detail'
 import { CategoryPublicModel, CategoryPublicView } from './public/category'
 import { CheckoutModel, CheckoutView } from './screens/checkout'
 import { SearchModel, SearchView } from './screens/search'
+import { ProfileModel, ProfileView } from './screens/profile'
 
 const { ConnectedRouter } = routerRedux
 
@@ -64,6 +65,10 @@ function Routers({ history, app }) {
     path: '/search',
     models: () => [SearchModel],
     component: () => SearchView,
+  }, {
+    path: '/profile',
+    models: () => [ProfileModel],
+    component: () => ProfileView,
   }]
   // const role = localStorage.getItem(AppConst.localStorage.roleKey)
   const unauthenticatedComponents = (

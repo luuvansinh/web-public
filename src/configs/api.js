@@ -50,6 +50,10 @@ export default {
       url: `/orders/${_id}`,
       method: METHODS.patch,
     }),
+    all: () => ({
+      url: '/orders',
+      method: METHODS.get,
+    }),
   },
 
   // COMMON
