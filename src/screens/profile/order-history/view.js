@@ -49,7 +49,7 @@ const OrderItem = ({ order, toggleModal, cancel }) => (
         <Col span={13}>
           {
             order.list.map(item => (
-              <ProductItem key={item.id} item={item} toggleModal={toggleModal} />
+              <ProductItem key={item._id} item={item} toggleModal={toggleModal} />
             ))
           }
         </Col>
