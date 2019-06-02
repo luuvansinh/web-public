@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
-import { Layout, Row, Col } from 'antd';
+import { Layout, Row, Col, Card } from 'antd';
 import { ProductItem, RcSlider, RcSelectBox } from '../../components';
 import { helper } from '../../utils';
 import { AppConst } from '../../configs';
@@ -34,29 +34,37 @@ export class SearchView extends PureComponent {
     const { search: { products }, dispatch } = this.props
     return (
       <Layout className="public-content">
-        <Row gutter={16} type="flex" justify="center">
-          <Col span={18} className="filter-box">
-            <RcSlider
-              defaultValue={[0, 2000000]}
-              step={1000}
-              title="Giá"
-            />
-            <RcSelectBox
-              title="Sắp xếp theo"
-              initValue={AppConst.sort.default}
-              values={AppConst.sort.list}
-              onChange={sort => this.onFilterChange({ sort })}
-              isHorizontal
-            />
-          </Col>
-        </Row>
+        {
+          !!products.length && (
+            <Row gutter={16} type="flex" justify="center">
+              <Col span={18} className="filter-box">
+                <RcSlider
+                  defaultValue={[0, 2000000]}
+                  step={1000}
+                  title="Giá"
+                />
+                <RcSelectBox
+                  title="Sắp xếp theo"
+                  initValue={AppConst.sort.default}
+                  values={AppConst.sort.list}
+                  onChange={sort => this.onFilterChange({ sort })}
+                  isHorizontal
+                />
+              </Col>
+            </Row>
+          )
+        }
         <Row gutter={16} type="flex" justify="center">
           <Col span={18}>
             <Row gutter={16}>
               {
-                products.map(item => (
+                products.length ? products.map(item => (
                   <ProductItem dispatch={dispatch} product={item} key={item._id} />
-                ))
+                )) : (
+                  <Card>
+                    Không tìm thấy sản phẩm phù hợp
+                  </Card>
+                )
               }
             </Row>
           </Col>
