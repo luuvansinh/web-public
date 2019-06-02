@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { Col, Card, Button, Rate } from 'antd';
 import { Link } from 'dva/router';
 import './style.less'
+import { format } from '../utils';
 
 export class Product extends PureComponent {
   addToCart = () => {
@@ -27,7 +28,7 @@ export class Product extends PureComponent {
                 <div>
                   <Rate style={{ fontSize: 14 }} defaultValue={product.rating} disabled />
                 </div>
-                <span className="price">{`${product.currentPrice} K`}</span>
+                <span className="price">{`${format.number(product.currentPrice)} vnđ`}</span>
               </React.Fragment>
             )}
           />

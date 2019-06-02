@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Layout, Card, List, Row, Col, InputNumber, Button, Alert, Avatar } from 'antd';
 import { connect } from 'dva'
 import { Link } from 'react-router-dom';
 import { routerRedux } from 'dva/router';
 import { RcBreadcrumb } from '../../components';
 import './style.less'
+import { helper, format } from '../../utils';
 
 class CartView extends Component {
   removeCartItem = (productId) => {
@@ -38,7 +39,7 @@ class CartView extends Component {
               <p>{item.describe}</p>
             </Col>
             <Col sm={8} md={8} lg={7}>
-              <span>{item.price} K</span>
+              <span>{format.number(item.currentPrice)} vnđ</span>
             </Col>
             <Col sm={6} md={4} lg={3}>
               <InputNumber
@@ -69,11 +70,15 @@ class CartView extends Component {
         <RcBreadcrumb name="Giỏ hàng của tôi" parents={parents} />
         <Layout className="page-content">
           <Card>
-            {cart.length ? <List
-              itemLayout="horizontal"
-              dataSource={cart}
-              renderItem={this.renderListItem}
-            /> :
+            {cart.length ? (
+              <Fragment>
+                <List
+                  itemLayout="horizontal"
+                  dataSource={cart}
+                  renderItem={this.renderListItem}
+                />
+              </Fragment>
+            ) :
               (
                 <Row type="flex" justify="center">
                   <Col span={12} className="align-center">
@@ -92,6 +97,9 @@ class CartView extends Component {
           {
             !!cart.length &&
             <Row className="checkout-section">
+              <Col span={18}>
+                <h4>Tổng cộng: {format.number(helper.calculateTotal(cart))} vnđ</h4>
+              </Col>
               <Col sm={10} md={8} lg={6} className="float-right">
                 <Link to="/checkout">
                   <Button type="primary" block>Tiến hành đặt hàng</Button>
