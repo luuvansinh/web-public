@@ -35,6 +35,14 @@ function Routers({ history, app }) {
     path: '/products/:productId',
     models: () => [ProductDetailModel],
     component: () => ProductDetailView,
+  }, {
+    path: '/categories/:categoryId',
+    models: () => [CategoryPublicModel],
+    component: () => CategoryPublicView,
+  }, {
+    path: '/search',
+    models: () => [SearchModel],
+    component: () => SearchView,
   }]
   // Routes
   const routes = [{

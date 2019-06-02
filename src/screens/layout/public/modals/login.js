@@ -6,7 +6,7 @@ const formItemLayout = ComponentConst.form.itemLayout
 
 export class LoginModal extends PureComponent {
   onSubmit = () => {
-    const { form: { validateFields }, dispatch, isLogin } = this.props
+    const { form: { validateFields }, dispatch, isLogin, onClose } = this.props
     validateFields((err, values) => {
       if (!err) {
         dispatch({
@@ -14,6 +14,7 @@ export class LoginModal extends PureComponent {
           payload: values,
           isLogin,
         })
+        onClose()
       }
     })
   }

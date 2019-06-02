@@ -44,10 +44,27 @@ export class PHeader extends PureComponent {
     this.setState({ isLogin: type === 'login' })
   }
 
+  logout = () => {
+    this.props.dispatch({
+      type: 'app/logout',
+    })
+  }
+
   render() {
     const { categories, hasPublicUser, pUser, dispatch, cart, keyword } = this.props
     const { isVisibleLoginModal, isLogin } = this.state
-    const popupContent = (
+    const popupContent = hasPublicUser ? (
+      <Menu>
+        <Menu.Item>
+          <Link to="/profile">
+            Profile
+          </Link>
+        </Menu.Item>
+        <Menu.Item onClick={this.logout}>
+          Đăng xuất
+        </Menu.Item>
+      </Menu>
+    ) : (
       <Menu>
         <Menu.Item onClick={this.toggleLoginModal}>
           {MessageConst.login}
@@ -81,9 +98,9 @@ export class PHeader extends PureComponent {
                     <Icon style={{ fontSize: 30 }} type="user" />
                   </Dropdown>
                 ) : (
-                  <Link to="/profile">
+                  <Dropdown overlay={popupContent}>
                     <Avatar src={pUser.avatar || ImageConst.defaultAvatar} />
-                  </Link>
+                  </Dropdown>
                 )
               }
             </div>
