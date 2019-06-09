@@ -73,9 +73,6 @@ class ProfileView extends Component {
                 loading={loading}
               />
             </Row>
-            {/* <div className="logout-action">
-              <Button onClick={() => dispatch({ type: 'app/logout' })} type="danger" >Đăng xuất</Button>
-            </div> */}
             <UpdateModal
               dispatch={dispatch}
               user={pUser}

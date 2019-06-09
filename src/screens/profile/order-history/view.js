@@ -83,7 +83,7 @@ export default class OrderHistory extends Component {
     }
   }
   componentDidMount() {
-    this.onFilterChange()
+    this.onFilterChange({})
   }
 
   /**
@@ -92,7 +92,7 @@ export default class OrderHistory extends Component {
   onFilterChange = (newFilter = {}) => {
     const { filter } = this.props
     if (!newFilter.page) {
-      newFilter.page = 1
+      newFilter.page = 0
     }
     const filters = helper.mergeObjects(filter, newFilter)
     const query = lodash.pick(filters, ['page', 'perpage'])
