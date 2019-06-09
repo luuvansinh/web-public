@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Layout, Row, Col, Card } from 'antd';
-import { ProductItem, RcSlider, RcSelectBox } from '../../components';
+import { ProductItem, RcSelectBox } from '../../components';
 import { helper } from '../../utils';
 import { AppConst } from '../../configs';
 
@@ -38,11 +38,11 @@ export class SearchView extends PureComponent {
           !!products.length && (
             <Row gutter={16} type="flex" justify="center">
               <Col span={18} className="filter-box">
-                <RcSlider
+                {/* <RcSlider
                   defaultValue={[0, 2000000]}
                   step={1000}
                   title="Giá"
-                />
+                /> */}
                 <RcSelectBox
                   title="Sắp xếp theo"
                   initValue={AppConst.sort.default}

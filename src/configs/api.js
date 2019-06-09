@@ -145,4 +145,11 @@ export default {
       method: METHODS.get,
     }),
   },
+
+  payment: {
+    create: () => ({
+      url: '/payments',
+      method: METHODS.post,
+    }),
+  },
 }

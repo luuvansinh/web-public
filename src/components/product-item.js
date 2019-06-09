@@ -28,7 +28,7 @@ export class Product extends PureComponent {
                 <div>
                   <Rate style={{ fontSize: 14 }} defaultValue={product.rating} disabled />
                 </div>
-                <span className="price">{`${format.number(product.currentPrice)} vnđ`}</span>
+                <span className="price">{`${format.number(product.currentPrice)} đ`}</span>
               </React.Fragment>
             )}
           />

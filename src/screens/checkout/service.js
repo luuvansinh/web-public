@@ -8,3 +8,11 @@ export const order = (data) => {
     body: data,
   })
 }
+
+export const payment = (data) => {
+  const api = ApiConst.payment.create()
+  return request.call(api.url, {
+    method: api.method,
+    body: data,
+  })
+}
