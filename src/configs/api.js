@@ -129,20 +129,14 @@ export default {
     }),
   },
 
-  // USER
-  user: {
-    all: () => {
-      return {
-        url: '/users',
-        method: METHODS.get,
-      }
-    },
-  },
-
   me: {
     userInfo: () => ({
       url: '/me',
       method: METHODS.get,
+    }),
+    update: () => ({
+      url: '/me/update-info',
+      method: METHODS.put,
     }),
   },
 

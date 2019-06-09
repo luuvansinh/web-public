@@ -2,7 +2,7 @@ import { ApiConst } from '../../configs'
 import { request } from '../../utils'
 
 const update = (data) => {
-  const api = ApiConst.user.update()
+  const api = ApiConst.me.update()
   return request.call(api.url, {
     method: api.method,
     body: data,

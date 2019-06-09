@@ -15,10 +15,11 @@ export default {
   effects: {
     *update({ payload }, { call, put }) {
       const response = yield call(update, payload)
-      const { error } = response
-      if (error) {
-        return notification.error(error)
+      const { success, message } = response.data
+      if (!success) {
+        return notification.error(message)
       }
+      notification.success(message)
       yield put({
         type: 'app/init',
       })

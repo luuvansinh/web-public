@@ -1,6 +1,5 @@
-import moment from 'moment'
 import React, { Component } from 'react'
-import { Modal, Form, Input, Radio, DatePicker } from 'antd'
+import { Modal, Form, Input, Radio } from 'antd'
 
 class UpdateModal extends Component {
   onSubmit = (e) => {
@@ -12,7 +11,6 @@ class UpdateModal extends Component {
           type: 'profile/update',
           payload: {
             ...values,
-            birthday: moment(values.birthday).format('YYYY-MM-DD'),
           },
         })
         toggleModal()
@@ -35,8 +33,8 @@ class UpdateModal extends Component {
         <Form>
           <Form.Item>
             {
-              getFieldDecorator('fullname', {
-                initialValue: user.fullname,
+              getFieldDecorator('name', {
+                initialValue: user.name,
               })(<Input placeholder="Họ tên" />)
             }
           </Form.Item>
@@ -60,31 +58,10 @@ class UpdateModal extends Component {
                 initialValue: user.gender,
               })((
                 <Radio.Group>
-                  <Radio value={1}>Nam</Radio>
-                  <Radio value={0}>Nữ</Radio>
+                  <Radio value="male">Nam</Radio>
+                  <Radio value="female">Nữ</Radio>
                 </Radio.Group>
               ))
-            }
-          </Form.Item>
-          <Form.Item label="Ngày sinh">
-            {
-              getFieldDecorator('birthday', {
-                initialValue: moment(user.birthday, 'YYYY-MM-DD'),
-              })((
-                <DatePicker format="YYYY-MM-DD" />
-              ))
-            }
-          </Form.Item>
-          <Form.Item>
-            {
-              getFieldDecorator('password', {
-              })(<Input type="password" placeholder="Mật khẩu mới" />)
-            }
-          </Form.Item>
-          <Form.Item>
-            {
-              getFieldDecorator('password_confirmation', {
-              })(<Input type="password" placeholder="Xác nhận mật khẩu mới" />)
             }
           </Form.Item>
         </Form>
